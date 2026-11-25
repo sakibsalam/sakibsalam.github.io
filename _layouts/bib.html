@@ -124,6 +124,9 @@
           <div class="periodical">
             {{ periodical | strip }}
           </div>
+          {%- if entry.note %}
+          <div class="periodical"><small>{{ entry.note }}</small></div>
+          {%- endif %}
         {%- endif %}
         
           <!-- Links/Buttons -->
