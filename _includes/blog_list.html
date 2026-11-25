@@ -12,7 +12,6 @@
 
   <div class="header-bar">
     <h1>{% if include.lang == 'bn' %}ব্লগ{% else %}{{ site.blog_name }}{% endif %}</h1>
-    <h2>{% if include.lang == 'bn' %}গণিত, দর্শন আর চারপাশের নানা পর্যবেক্ষণ নিয়ে লেখা।{% else %}{{ site.blog_description }}{% endif %}</h2>
     <div class="mt-3">{% include blog_lang_toggle.html lang=include.lang %}</div>
   </div>
 
