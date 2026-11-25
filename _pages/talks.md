@@ -18,6 +18,6 @@ nav_order: 2
 
 #### Service
 
-- Session chair, CS029 "Theory and Methods for Markov Chains and Nonparametric Estimation" (refereed session), SDSS 2026, Milwaukee, WI. April 30, 2026.
+- Session chair, "Theory and Methods for Markov Chains and Nonparametric Estimation" (refereed session), SDSS 2026, Milwaukee, WI. April 30, 2026.
 - President, ASA Student Chapter, Medical College of Wisconsin. June 2024 to present.
 - Executive committee member and webmaster, [WNAR Student Committee](https://wnar-student.github.io/), International Biometric Society. 2022 to 2023.
