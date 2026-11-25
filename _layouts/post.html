@@ -13,11 +13,40 @@ layout: default
 </style>
 {% endif %}
 
+{%- assign is_bn = false -%}
+{%- if page.lang == 'bn' -%}{%- assign is_bn = true -%}{%- endif -%}
+{%- assign other_post = nil -%}
+{%- if page.ref -%}
+  {%- for p in site.posts -%}
+    {%- if p.ref == page.ref and p.lang != page.lang -%}{%- assign other_post = p -%}{%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{% if is_bn %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  [lang="bn"] { font-family: 'Noto Serif Bengali', serif; line-height: 1.9; }
+  [lang="bn"] .MathJax, [lang="bn"] mjx-container, [lang="bn"] code, [lang="bn"] pre { font-family: inherit; }
+  [lang="bn"] code, [lang="bn"] pre { font-family: monospace; }
+</style>
+{% endif %}
+
 <div class="post">
 
-  <header class="post-header">
+  <header class="post-header"{% if is_bn %} lang="bn"{% endif %}>
     <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%B %-d, %Y" }}{%- if page.author -%} • {{ page.author }}{%- endif -%}{%- if page.meta -%} • {{ page.meta }}{%- endif -%}</p>
+    {%- if other_post %}
+    <p class="post-translation">
+      {%- if is_bn -%}
+      <a href="{{ other_post.url | relative_url }}" lang="en" hreflang="en">Read this in English</a>
+      {%- else -%}
+      <a href="{{ other_post.url | relative_url }}" lang="bn" hreflang="bn">এই লেখাটি বাংলায় পড়ুন</a>
+      {%- endif -%}
+    </p>
+    {%- endif %}
+    <p class="post-meta">{% if is_bn %}{% include bn_date.html date=page.date %}{% else %}{{ page.date | date: "%B %-d, %Y" }}{% endif %}{%- if page.author -%} • {{ page.author }}{%- endif -%}{%- if page.meta -%} • {{ page.meta }}{%- endif -%}</p>
     <p class="post-tags">
       <a href="{{ year | prepend: '/blog/' | prepend: site.baseurl}}"> <i class="fas fa-calendar fa-sm"></i> {{ year }} </a>
       {%- if tags != "" %}
@@ -39,9 +68,17 @@ layout: default
     </p>
   </header>
 
-  <article class="post-content">
+  <article class="post-content"{% if is_bn %} lang="bn"{% endif %}>
     {{ content | toc}}
   </article>
+
+  <p class="post-back">
+    {%- if is_bn -%}
+    <a href="{{ '/blog/bn/' | relative_url }}" lang="bn">সব লেখা</a>
+    {%- else -%}
+    <a href="{{ '/blog/' | relative_url }}">All posts</a>
+    {%- endif -%}
+  </p>
 
   {%- if site.disqus_shortname and page.comments -%}
     <div id="disqus_thread"></div>

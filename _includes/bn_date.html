@@ -1,0 +1,7 @@
+{%- comment -%} Usage: include bn_date.html date=post.date . Prints a date in Bangla, e.g. ২০ নভেম্বর ২০২৬. {%- endcomment -%}
+{%- assign bn_months = "জানুয়ারি,ফেব্রুয়ারি,মার্চ,এপ্রিল,মে,জুন,জুলাই,আগস্ট,সেপ্টেম্বর,অক্টোবর,নভেম্বর,ডিসেম্বর" | split: "," -%}
+{%- assign bn_m = include.date | date: "%-m" | minus: 1 -%}
+{%- assign bn_d = include.date | date: "%-d" -%}
+{%- assign bn_y = include.date | date: "%Y" -%}
+{%- assign bn_raw = bn_d | append: " " | append: bn_months[bn_m] | append: " " | append: bn_y -%}
+{{- bn_raw | replace: "0", "০" | replace: "1", "১" | replace: "2", "২" | replace: "3", "৩" | replace: "4", "৪" | replace: "5", "৫" | replace: "6", "৬" | replace: "7", "৭" | replace: "8", "৮" | replace: "9", "৯" -}}
