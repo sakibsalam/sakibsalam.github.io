@@ -2,7 +2,7 @@
 layout: page
 permalink: /talks/
 title: Talks
-description: Talks, posters, and service
+description: Conferences and miscellaneous
 nav: true
 nav_order: 2
 ---
